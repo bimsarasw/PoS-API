@@ -3,6 +3,7 @@ scalar Object
 type Query{
     ping: String
     getAllUsers: Object
+    getAllAdmin: Object
 }
 
 type Mutation {
