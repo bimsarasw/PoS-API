@@ -41,6 +41,7 @@ public class GraphQLController {
     @MutationMapping(name = "addProduct")
     public Product addProduct(@Argument ProductDTO products) {
         return productService.addProduct(products);
+
     }
 
     @MutationMapping(name = "createUser")
@@ -62,4 +63,8 @@ public class GraphQLController {
         return userService.getAllUsers();
     }
 
+    @QueryMapping(name = "getAllAdmin")
+    public List<Admin> getAllAdmin() {
+        return adminService.getAllAdmin();
+    }
 }

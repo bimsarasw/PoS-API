@@ -2,12 +2,14 @@ package PoS.example.PoS.service.Impl;
 
 import PoS.example.PoS.dtos.AdminDTO;
 import PoS.example.PoS.entity.Admin;
+import PoS.example.PoS.entity.User;
 import PoS.example.PoS.repo.AdminRepo;
 import PoS.example.PoS.service.AdminService;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -35,5 +37,10 @@ public class AdminServiceImpl implements AdminService {
         } else {
             throw new RuntimeException("Admin not found with ID: " + adminId);
         }
+    }
+
+    @Override
+    public List<Admin> getAllAdmin() {
+        return adminRepository.findAll();
     }
 }
