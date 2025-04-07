@@ -2,7 +2,7 @@ package PoS.example.PoS.service.Impl;
 
 import PoS.example.PoS.dtos.*;
 import PoS.example.PoS.entity.*;
-import PoS.example.PoS.repo.*;
+import PoS.example.PoS.repo.ProductRepo;
 import PoS.example.PoS.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
