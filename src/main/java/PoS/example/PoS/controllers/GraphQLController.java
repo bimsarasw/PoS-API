@@ -23,6 +23,7 @@ public class GraphQLController {
     private final UserService userService;
     private final ProductService productService;
     private final CategoryService categoryService;
+    private final SupplierService supplierService;
 
 
 
@@ -91,5 +92,15 @@ public class GraphQLController {
     @MutationMapping(name = "updateProduct")
     public Product updateProduct(@Argument String productId,@Argument ProductDTO product) {
         return productService.updateProduct(productId,product);
+    }
+
+    @MutationMapping(name = "createSupplier")
+    public Supplier createSupplier(@Argument SupplierDTO supplier) {
+        return supplierService.createSupplier(supplier);
+    }
+
+    @MutationMapping(name = "updateSupplier")
+    public Supplier updateSupplier(@Argument String supplierId,@Argument SupplierDTO supplier) {
+        return supplierService.updateSupplier(supplierId,supplier);
     }
 }

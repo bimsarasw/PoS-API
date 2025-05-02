@@ -20,6 +20,9 @@ type Mutation {
     updateProduct(productId: String ,product:Products):Object
     createCategory(category: Category!):Object
 
+    createSupplier(supplier:Supplier!):Object
+    updateSupplier(supplierId:String!,supplier:Supplier):Object
+
 
 
 }
@@ -56,4 +59,11 @@ input Products{
 
 input Category{
     categoryName: String!
+}
+
+input Supplier{
+    supplierName:String!
+    supplierContact:String!
+    companyName:String!
+    supplierEmail:String!
 }
