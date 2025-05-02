@@ -2,9 +2,7 @@ package PoS.example.PoS.service.Impl;
 
 
 
-import PoS.example.PoS.dtos.AdminDTO;
 import PoS.example.PoS.dtos.UserDTO;
-import PoS.example.PoS.entity.Admin;
 import PoS.example.PoS.entity.User;
 import PoS.example.PoS.repo.UserRepository;
 import PoS.example.PoS.service.UserService;
