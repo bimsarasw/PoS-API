@@ -4,14 +4,22 @@ type Query{
     ping: String
     getAllUsers: Object
     getAllAdmin: Object
+    getAllCategory:Object
 }
 
 type Mutation {
-    createAdmin(adminDTO: AdminDTO!): Object
     createUser(user: User!): Object
-    addProduct(products: Products!): Object
-    createCategory(category: Category!):Object
+    updateUser(userId: String! , user:User):Object
+    deleteUser(userId:String!):Object
+
+    createAdmin(adminDTO: AdminDTO!): Object
     updateAdmin(adminId:String! , adminDTO:AdminDTO):Object
+    deleteAdmin(adminId:String!):Object
+
+    addProduct(products: Products!): Object
+    updateProduct(productId: String ,product:Products):Object
+    createCategory(category: Category!):Object
+
 
 
 }
@@ -25,10 +33,11 @@ type Mutation {
 
 
 
-input User {
+input User{
     userName: String!
     password: String!
     email:String!
+    phoneNumber:String!
 }
 input AdminDTO {
 

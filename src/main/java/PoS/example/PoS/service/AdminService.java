@@ -12,4 +12,5 @@ public interface AdminService {
     Admin createAdmin(AdminDTO adminDTO);  // Method to create an admin
     Admin updateAdmin(String adminId ,AdminDTO adminDTO);
     List<Admin> getAllAdmin();
+    Admin deleteAdmin(String adminId);
 }
