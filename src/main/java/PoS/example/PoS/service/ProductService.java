@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ProductService {
     Product addProduct(ProductDTO productDTO);
+    Product updateProduct(String productId,ProductDTO productDTO);
 }

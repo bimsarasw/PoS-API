@@ -67,4 +67,29 @@ public class GraphQLController {
     public List<Admin> getAllAdmin() {
         return adminService.getAllAdmin();
     }
+
+    @MutationMapping(name ="deleteAdmin")
+    public Admin deleteAdmin(@Argument String adminId) {
+        return adminService.deleteAdmin(adminId);
+    }
+
+    @MutationMapping(name = "updateUser")
+    public User updateUser( @Argument String userId,@Argument UserDTO user) {
+        return userService.updateUser(userId,user);
+    }
+
+    @MutationMapping(name = "deleteUser")
+    public User deleteUser(@Argument String userId) {
+        return userService.deleteUser(userId);
+    }
+
+    @QueryMapping (name = "getAllCategory")
+    public List<Category> getAllCategory() {
+        return categoryService.getAllCategory();
+    }
+
+    @MutationMapping(name = "updateProduct")
+    public Product updateProduct(@Argument String productId,@Argument ProductDTO product) {
+        return productService.updateProduct(productId,product);
+    }
 }

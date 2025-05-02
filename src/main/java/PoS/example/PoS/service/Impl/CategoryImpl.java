@@ -7,6 +7,8 @@ import PoS.example.PoS.repo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 
 public class CategoryImpl implements CategoryService {
@@ -20,5 +22,10 @@ public class CategoryImpl implements CategoryService {
 
         category.setCategoryName(categoryDTO.getCategoryName());
         return categoryRepo.save(category);
+    }
+
+    @Override
+    public List<Category> getAllCategory() {
+        return categoryRepo.findAll();
     }
 }

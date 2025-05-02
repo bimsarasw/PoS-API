@@ -43,4 +43,14 @@ public class AdminServiceImpl implements AdminService {
     public List<Admin> getAllAdmin() {
         return adminRepository.findAll();
     }
+
+    @Override
+    public Admin deleteAdmin(String adminId) {
+        Optional<Admin> optionalAdmin = adminRepository.findById(adminId);
+        if (optionalAdmin.isPresent()) {
+            adminRepository.deleteById(adminId);
+            return optionalAdmin.get(); // Return the deleted admin
+        }
+        throw new RuntimeException("Admin not found with id: " + adminId);
+    }
 }
