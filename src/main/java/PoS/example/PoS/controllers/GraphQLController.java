@@ -1,23 +1,20 @@
 package PoS.example.PoS.controllers;
 
-
-
 import PoS.example.PoS.dtos.*;
 import PoS.example.PoS.entity.*;
 import PoS.example.PoS.service.*;
-import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
-
+@CrossOrigin(origins = "*")
 @Controller
-@Data
+@RequiredArgsConstructor
 public class GraphQLController {
-
 
     private final AdminService adminService;
     private final UserService userService;
@@ -25,24 +22,19 @@ public class GraphQLController {
     private final CategoryService categoryService;
     private final SupplierService supplierService;
 
-
-
-
     @QueryMapping(name = "ping")
     public String ping() {
         return "pong";
     }
 
-    // Mutation to create a new Admin
     @MutationMapping(name = "createAdmin")
     public Admin createAdmin(@Argument AdminDTO adminDTO) {
-        return adminService.createAdmin(adminDTO);  // Call the service to create the admin
+        return adminService.createAdmin(adminDTO);
     }
 
     @MutationMapping(name = "addProduct")
     public Product addProduct(@Argument ProductDTO products) {
         return productService.addProduct(products);
-
     }
 
     @MutationMapping(name = "createUser")
@@ -50,11 +42,12 @@ public class GraphQLController {
         return userService.createUser(user);
     }
 
-    @MutationMapping(name="createCategory")
+    @MutationMapping(name = "createCategory")
     public Category createCategory(@Argument CategoryDTO category) {
         return categoryService.createCategory(category);
     }
-    @MutationMapping(name="updateAdmin")
+
+    @MutationMapping(name = "updateAdmin")
     public Admin updateAdmin(@Argument String adminId, @Argument AdminDTO adminDTO) {
         return adminService.updateAdmin(adminId, adminDTO);
     }
@@ -69,14 +62,14 @@ public class GraphQLController {
         return adminService.getAllAdmin();
     }
 
-    @MutationMapping(name ="deleteAdmin")
+    @MutationMapping(name = "deleteAdmin")
     public Admin deleteAdmin(@Argument String adminId) {
         return adminService.deleteAdmin(adminId);
     }
 
     @MutationMapping(name = "updateUser")
-    public User updateUser( @Argument String userId,@Argument UserDTO user) {
-        return userService.updateUser(userId,user);
+    public User updateUser(@Argument String userId, @Argument UserDTO user) {
+        return userService.updateUser(userId, user);
     }
 
     @MutationMapping(name = "deleteUser")
@@ -84,14 +77,14 @@ public class GraphQLController {
         return userService.deleteUser(userId);
     }
 
-    @QueryMapping (name = "getAllCategory")
+    @QueryMapping(name = "getAllCategory")
     public List<Category> getAllCategory() {
         return categoryService.getAllCategory();
     }
 
     @MutationMapping(name = "updateProduct")
-    public Product updateProduct(@Argument String productId,@Argument ProductDTO product) {
-        return productService.updateProduct(productId,product);
+    public Product updateProduct(@Argument String productId, @Argument ProductDTO product) {
+        return productService.updateProduct(productId, product);
     }
 
     @MutationMapping(name = "createSupplier")
@@ -100,7 +93,18 @@ public class GraphQLController {
     }
 
     @MutationMapping(name = "updateSupplier")
-    public Supplier updateSupplier(@Argument String supplierId,@Argument SupplierDTO supplier) {
-        return supplierService.updateSupplier(supplierId,supplier);
+    public Supplier updateSupplier(@Argument String supplierId, @Argument SupplierDTO supplier) {
+        return supplierService.updateSupplier(supplierId, supplier);
+    }
+
+
+     @MutationMapping(name = "deleteSupplier")
+     public Supplier deleteSupplier(@Argument String supplierId) {
+         return supplierService.deleteSupplier(supplierId);
+     }
+
+    @QueryMapping(name = "getAllSupplier")
+    public List<Supplier> getAllSupplier() {
+        return supplierService.getAllSupplier();
     }
 }

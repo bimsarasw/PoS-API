@@ -1,0 +1,40 @@
+package PoS.example.PoS.config;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.web.SecurityFilterChain;
+
+import javax.crypto.spec.SecretKeySpec;
+
+@EnableWebSecurity
+@Configuration
+public class SecurityConfig {
+
+
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+                .cors().disable()
+                .csrf().disable()
+                .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/auth/login").permitAll()
+                        .requestMatchers("/auth/getJWT").permitAll()
+                        .requestMatchers("/auth/getUser").permitAll()
+                        .requestMatchers("/auth/isExpired").permitAll()
+                        .requestMatchers("/graphql").permitAll()
+                        .anyRequest().authenticated()
+
+
+
+
+                );
+        return http.build();
+    }
+
+
+}
+
