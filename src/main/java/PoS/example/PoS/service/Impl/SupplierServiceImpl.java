@@ -1,7 +1,9 @@
 package PoS.example.PoS.service.Impl;
 
 import PoS.example.PoS.dtos.SupplierDTO;
+import PoS.example.PoS.entity.Category;
 import PoS.example.PoS.entity.Supplier;
+import PoS.example.PoS.entity.User;
 import PoS.example.PoS.repo.SupplierRepo;
 import PoS.example.PoS.service.SupplierService;
 import org.jetbrains.annotations.NotNull;
@@ -41,6 +43,21 @@ public class SupplierServiceImpl implements SupplierService {
         } else {
             throw new RuntimeException("User not found with ID: " + supplierId);
         }
+    }
+
+    @Override
+    public Supplier deleteSupplier(String supplierId) {
+        Optional<Supplier> optionalSupplier = supplierRepo.findById(supplierId);
+        if (optionalSupplier.isPresent()) {
+            supplierRepo.deleteById(supplierId);
+            return optionalSupplier.get(); // Return the deleted admin
+        }
+        throw new RuntimeException("Admin not found with id: " + supplierId);
+    }
+
+    @Override
+    public List<Supplier> getAllSupplier() {
+        return supplierRepo.findAll();
     }
 
 
